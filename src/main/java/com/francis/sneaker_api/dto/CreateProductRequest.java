@@ -1,32 +1,21 @@
-package com.francis.sneaker_api.model;
+package com.francis.sneaker_api.dto;
 
-import jakarta.persistence.*;
+import com.francis.sneaker_api.model.Category;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "products")
 
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class CreateProductRequest {
     @NotBlank(message = "Le nom est obligatoire")
     private String name;
 
     @NotBlank(message = "La marque est obligatoire")
     private String brand;
 
-    @NotNull(message = "Le prix est obligatoire")
-    @Min(value = 0, message = "Le prix doit être positif")
+    @NotNull(message = "Le prix est obligatoir ")
     private Double price;
 
     @NotNull(message = "Le stock est obligatoire")
@@ -35,7 +24,6 @@ public class Product {
 
     private String description;
 
-    @Enumerated(EnumType.STRING)
     @NotNull(message = "La catégorie est obligatoire")
     private Category category;
 }
