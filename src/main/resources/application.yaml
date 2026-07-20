@@ -2,13 +2,13 @@ spring:
   application:
     name: sneaker-api
   datasource:
-    url: ${SPRING_DATASOURCE_URL}
+    url: jdbc:${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
   jpa:
     show-sql: false
     hibernate:
-      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
