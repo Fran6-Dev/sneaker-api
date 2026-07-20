@@ -29,10 +29,9 @@ public class AuthService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(request.getRole() != null ? request.getRole() : "ROLE_USER");
         userRepository.save(user);
-        String token = jwtService.generateToken(user.getUsername());
+        String token = jwtService.generateToken(user.getUsername(), user.getRole());
         return new AuthResponse(token);
     }
-
 
     public AuthResponse login(LoginRequest request) {
         authenticationManager.authenticate(
@@ -43,8 +42,7 @@ public class AuthService {
         );
         User user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow();
-        String token = jwtService.generateToken(user.getUsername());
+        String token = jwtService.generateToken(user.getUsername(), user.getRole());
         return new AuthResponse(token);
-
     }
 }

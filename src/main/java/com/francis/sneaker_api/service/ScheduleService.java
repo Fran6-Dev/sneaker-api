@@ -2,7 +2,6 @@ package com.francis.sneaker_api.service;
 
 import com.francis.sneaker_api.dto.CreateScheduleRequest;
 import com.francis.sneaker_api.dto.ScheduleResponse;
-import com.francis.sneaker_api.model.WorkDay;
 import com.francis.sneaker_api.model.Schedule;
 import com.francis.sneaker_api.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +19,8 @@ public class ScheduleService {
         return new ScheduleResponse(
                 schedule.getId(),
                 schedule.getEmployeeName(),
-                schedule.getDay(),
+                schedule.getDate(),
                 schedule.getStartTime(),
-
                 schedule.getEndTime(),
                 schedule.getNote()
         );
@@ -31,7 +29,7 @@ public class ScheduleService {
     private Schedule toEntity(CreateScheduleRequest request) {
         Schedule schedule = new Schedule();
         schedule.setEmployeeName(request.getEmployeeName());
-        schedule.setDay(request.getDay());
+        schedule.setDate(request.getDate());
         schedule.setStartTime(request.getStartTime());
         schedule.setEndTime(request.getEndTime());
         schedule.setNote(request.getNote());
@@ -44,20 +42,6 @@ public class ScheduleService {
 
     public List<ScheduleResponse> getAllSchedules() {
         return scheduleRepository.findAll()
-                .stream()
-                .map(this::toResponse)
-                .toList();
-    }
-
-    public List<ScheduleResponse> getSchedulesByDay(WorkDay day) {
-        return scheduleRepository.findByDay(day)
-                .stream()
-                .map(this::toResponse)
-                .toList();
-    }
-
-    public List<ScheduleResponse> getSchedulesByEmployee(String employeeName) {
-        return scheduleRepository.findByEmployeeName(employeeName)
                 .stream()
                 .map(this::toResponse)
                 .toList();

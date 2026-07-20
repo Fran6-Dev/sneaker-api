@@ -2,7 +2,6 @@ package com.francis.sneaker_api.controller;
 
 import com.francis.sneaker_api.dto.CreateScheduleRequest;
 import com.francis.sneaker_api.dto.ScheduleResponse;
-import com.francis.sneaker_api.model.WorkDay;
 import com.francis.sneaker_api.service.ScheduleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -28,16 +27,6 @@ public class ScheduleController {
     @GetMapping
     public List<ScheduleResponse> getAllSchedules() {
         return scheduleService.getAllSchedules();
-    }
-
-    @GetMapping("/day/{day}")
-    public List<ScheduleResponse> getByDay(@PathVariable WorkDay day) {
-        return scheduleService.getSchedulesByDay(day);
-    }
-
-    @GetMapping("/employee/{employeeName}")
-    public List<ScheduleResponse> getByEmployee(@PathVariable String employeeName) {
-        return scheduleService.getSchedulesByEmployee(employeeName);
     }
 
     @DeleteMapping("/{id}")

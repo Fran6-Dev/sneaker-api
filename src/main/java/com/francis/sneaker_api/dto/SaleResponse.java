@@ -12,6 +12,7 @@ public class SaleResponse {
     private String productName;
     private String productBrand;
     private Integer quantity;
+    private Double promotion;
     private Double totalPrice;
     private LocalDateTime saleDate;
 }

@@ -24,6 +24,7 @@ public class SaleService {
                 sale.getProduct().getName(),
                 sale.getProduct().getBrand(),
                 sale.getQuantity(),
+                sale.getPromotion(),
                 sale.getTotalPrice(),
                 sale.getSaleDate()
         );
@@ -43,7 +44,8 @@ public class SaleService {
         Sale sale = new Sale();
         sale.setProduct(product);
         sale.setQuantity(request.getQuantity());
-        sale.setTotalPrice(product.getPrice() * request.getQuantity());
+        sale.setPromotion(request.getPromotion());
+        sale.setTotalPrice((product.getPrice() * request.getQuantity()) * (1 - request.getPromotion() / 100.0));
 
         return toResponse(saleRepository.save(sale));
     }

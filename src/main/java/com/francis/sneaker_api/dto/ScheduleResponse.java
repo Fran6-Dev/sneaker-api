@@ -1,9 +1,9 @@
 package com.francis.sneaker_api.dto;
 
-import com.francis.sneaker_api.model.WorkDay;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Data
@@ -11,7 +11,7 @@ import java.time.LocalTime;
 public class ScheduleResponse {
     private Long id;
     private String employeeName;
-    private WorkDay day;
+    private LocalDate date;
     private LocalTime startTime;
     private LocalTime endTime;
     private String note;

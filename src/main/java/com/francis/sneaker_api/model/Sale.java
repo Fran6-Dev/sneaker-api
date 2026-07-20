@@ -25,6 +25,7 @@ public class Sale {
     private Integer quantity;
     private Double totalPrice;
     private LocalDateTime saleDate;
+    private Double promotion;
 
     @PrePersist
     public void prePersist() {
