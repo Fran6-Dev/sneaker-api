@@ -15,8 +15,11 @@ public class CreateProductRequest {
     @NotBlank(message = "La marque est obligatoire")
     private String brand;
 
-    @NotNull(message = "Le prix est obligatoir ")
+    @NotNull(message = "Le prix est obligatoire")
     private Double price;
+
+    @NotBlank(message = "La taille est obligatoire")
+    private String size;
 
     @NotNull(message = "Le stock est obligatoire")
     @Min(value = 0, message = "Le stock doit être positif")

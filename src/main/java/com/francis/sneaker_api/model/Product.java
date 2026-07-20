@@ -29,6 +29,8 @@ public class Product {
     @Min(value = 0, message = "Le prix doit être positif")
     private Double price;
 
+    private String size;
+
     @NotNull(message = "Le stock est obligatoire")
     @Min(value = 0, message = "Le stock doit être positif")
     private Integer stock;

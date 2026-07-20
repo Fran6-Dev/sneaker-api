@@ -12,7 +12,7 @@ public class CreateSaleRequest {
     @NotNull(message = "Le produit est obligatoire")
     @Min(value = 1, message = "La quantité doit être au moins 1")
     private Integer quantity;
-
+    private String size;
     private Double promotion;
 
 }

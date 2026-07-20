@@ -23,6 +23,7 @@ public class Sale {
     private Product product;
 
     private Integer quantity;
+    private String size;
     private Double totalPrice;
     private LocalDateTime saleDate;
     private Double promotion;

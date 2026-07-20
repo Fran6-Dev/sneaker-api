@@ -23,6 +23,7 @@ public class ProductService {
                 product.getName(),
                 product.getBrand(),
                 product.getPrice(),
+                product.getSize(),
                 product.getStock(),
                 product.getDescription(),
                 product.getCategory()
@@ -34,6 +35,7 @@ public class ProductService {
         product.setName(request.getName());
         product.setBrand(request.getBrand());
         product.setPrice(request.getPrice());
+        product.setSize(request.getSize());
         product.setStock(request.getStock());
         product.setDescription(request.getDescription());
         product.setCategory(request.getCategory());
@@ -69,6 +71,7 @@ public class ProductService {
             product.setName(request.getName());
             product.setBrand(request.getBrand());
             product.setPrice(request.getPrice());
+            product.setSize(request.getSize());
             product.setStock(request.getStock());
             product.setDescription(request.getDescription());
             return toResponse(productRepository.save(product));
