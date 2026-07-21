@@ -24,7 +24,7 @@ public class SaleService {
                 sale.getProduct().getName(),
                 sale.getProduct().getBrand(),
                 sale.getQuantity(),
-                sale.getProduct().getSize(),
+                sale.getSize(),
                 sale.getPromotion(),
                 sale.getTotalPrice(),
                 sale.getSaleDate()
