@@ -20,17 +20,29 @@ import java.util.List ;
 public class ProductController {
     private final ProductService productService;
 
-    @GetMapping
-    public List<ProductResponse> getAllProducts(@RequestParam(required = false) Category category) {
-        if (category != null) {
-            return productService.getProductsByCategory(category);
-        }
-        return productService.getAllProducts();
+    @GetMapping("/brands")
+    public List<String> getAllBrands() {
+        return productService.getAllBrands();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductResponse> getProductById(@PathVariable Long id) {
         return ResponseEntity.ok(productService.getProductById(id));
+    }
+
+    @GetMapping
+    public List<ProductResponse> getAllProducts(
+            @RequestParam(required = false) Category category,
+            @RequestParam(required = false) String brand) {
+
+        if (category != null && brand != null) {
+            return productService.getProductsByCategoryAndBrand(category, brand);
+        } else if (category != null) {
+            return productService.getProductsByCategory(category);
+        } else if (brand != null) {
+            return productService.getProductsByBrand(brand);
+        }
+        return productService.getAllProducts();
     }
 
     @PostMapping

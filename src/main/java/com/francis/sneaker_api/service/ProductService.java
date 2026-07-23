@@ -56,6 +56,24 @@ public class ProductService {
                 .toList();
     }
 
+    public List<String> getAllBrands() {
+        return productRepository.findAllBrands();
+    }
+
+    public List<ProductResponse> getProductsByBrand(String brand) {
+        return productRepository.findByBrand(brand)
+                .stream()
+                .map(this::toResponse)
+                .toList();
+    }
+
+    public List<ProductResponse> getProductsByCategoryAndBrand(Category category, String brand) {
+        return productRepository.findByCategoryAndBrand(category, brand)
+                .stream()
+                .map(this::toResponse)
+                .toList();
+    }
+
     public ProductResponse getProductById(Long id) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException(id));
